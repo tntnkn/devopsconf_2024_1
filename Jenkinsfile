@@ -14,5 +14,6 @@ pipeline {
 				echo "TEST TEST!"
 			}
 		}
+		currentBuild.result = 'FAILURE'
 	}
 }
