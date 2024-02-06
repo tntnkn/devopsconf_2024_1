@@ -13,7 +13,15 @@ pipeline {
 			steps {
 				echo "TEST TEST!"
 				script {
-					currentBuild.result = 'FAILURE'
+					ChecksDetails details = new ChecksDetailsBuilder()
+						.withName("Jenkins CI")
+						.withStatus(ChecksStatus.COMPLETED)
+						.withConclusion(ChecksConclusion.SUCCESS)
+						.withDetailsURL(DisplayURLProvider.get().getRunURL(run))
+						.withCompletedAt(LocalDateTime.now(ZoneOffset.UTC))
+						.build();
+					ChecksPublisher publisher = ChecksPublisherFactory.fromRun(run);
+					publisher.publish(details);
 				}
 			}
 
