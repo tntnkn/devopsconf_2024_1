@@ -8,6 +8,7 @@ pipeline {
 				branches: [[name: 'master']],
 				userRemoteConfigs: [[url: 'https://github.com/tntnkn/devopsconf_2024_1.git']])
 		}
+		}
 		stage("Analyze") {
 			steps {
 				echo "TEST TEST!"
