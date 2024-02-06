@@ -12,8 +12,11 @@ pipeline {
 		stage("Analyze") {
 			steps {
 				echo "TEST TEST!"
+				script {
+					currentBuild.result = 'FAILURE'
+				}
 			}
-			currentBuild.result = 'FAILURE'
+
 		}
 	}
 }
