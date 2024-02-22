@@ -1,0 +1,17 @@
+name: PVS-Studio analyze changes
+on:
+  push:
+    paths:
+      - '**.h'
+      - '**.c'
+      - '**.cpp'
+jobs:
+  analyze-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get list of changed source files
+        run: |
+          echo "$(git diff --name-only \
+            ${{ github.event.before }}..${{ github.event.after }})" \
+            > source-files.txt
+          cat source-files.txt
