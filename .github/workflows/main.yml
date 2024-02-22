@@ -9,6 +9,7 @@ jobs:
   analyze-changes:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Get list of changed source files
         run: |
           echo "$(git diff --name-only \
